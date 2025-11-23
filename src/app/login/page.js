@@ -8,7 +8,9 @@ export default function Login() {
         <div className="text-center mb-8"></div>
 
         <div className="bg-white shadow-lg rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-center mb-6">Sign in</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-black">
+            Sign in
+          </h2>
 
           <form>
             <div className="mb-4">
