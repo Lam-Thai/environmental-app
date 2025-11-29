@@ -96,44 +96,57 @@ const events = [
 
 export default function Events() {
   return (
-    <div className="min-h-screen bg-white pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
       <Header title="Upcoming Events" />
 
-      <main className="p-4 max-w-md mx-auto">
+      <main className="p-6 max-w-2xl mx-auto">
+        {/* Hero Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Upcoming Events
+          </h1>
+          <p className="text-gray-600">
+            Join environmental activities in your community
+          </p>
+        </div>
+
         {/* Filter Buttons */}
-        <div className="flex gap-2 overflow-x-auto pb-4 mb-4">
-          <button className="bg-green-500 text-white px-4 py-2 rounded-full text-sm whitespace-nowrap font-semibold">
+        <div className="flex gap-2 overflow-x-auto pb-4 mb-6 scrollbar-hide">
+          <button className="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-5 py-2.5 rounded-full text-sm whitespace-nowrap font-semibold shadow-md hover:shadow-lg transition-all">
             All Events
           </button>
-          <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm whitespace-nowrap hover:bg-gray-300">
+          <button className="bg-white text-gray-700 px-5 py-2.5 rounded-full text-sm whitespace-nowrap font-medium hover:bg-gray-100 transition-all border border-gray-200">
             Tree Planting
           </button>
-          <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm whitespace-nowrap hover:bg-gray-300">
+          <button className="bg-white text-gray-700 px-5 py-2.5 rounded-full text-sm whitespace-nowrap font-medium hover:bg-gray-100 transition-all border border-gray-200">
             Clean-Up
           </button>
-          <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm whitespace-nowrap hover:bg-gray-300">
+          <button className="bg-white text-gray-700 px-5 py-2.5 rounded-full text-sm whitespace-nowrap font-medium hover:bg-gray-100 transition-all border border-gray-200">
             Workshops
           </button>
         </div>
 
         {/* Events List */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           {events.map((event) => (
             <div
               key={event.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
             >
               {/* Event Image/Icon */}
-              <div className="h-32 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <span className="text-6xl">{event.image}</span>
+              <div className="h-40 bg-gradient-to-br from-emerald-400 via-green-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-black/10"></div>
+                <span className="text-7xl relative z-10 drop-shadow-lg">
+                  {event.image}
+                </span>
               </div>
 
               {/* Event Details */}
-              <div className="p-4">
-                {/* Status Badge */}
-                <div className="flex items-center justify-between mb-2">
+              <div className="p-6">
+                {/* Status Badge & Category */}
+                <div className="flex items-center justify-between mb-3">
                   <span
-                    className={`text-xs px-3 py-1 rounded-full font-semibold ${
+                    className={`inline-flex items-center text-xs px-3 py-1.5 rounded-full font-semibold ${
                       event.status === "Open"
                         ? "bg-green-100 text-green-700"
                         : event.status === "Almost Full"
@@ -141,65 +154,139 @@ export default function Events() {
                         : "bg-red-100 text-red-700"
                     }`}
                   >
+                    <span className="w-1.5 h-1.5 bg-current rounded-full mr-2"></span>
                     {event.status}
                   </span>
-                  <span className="text-xs text-gray-500 font-semibold">
+                  <span className="text-xs text-gray-500 font-semibold bg-gray-100 px-3 py-1.5 rounded-full">
                     {event.category}
                   </span>
                 </div>
 
                 {/* Event Title */}
-                <h3 className="font-bold text-lg mb-2 text-gray-900">
+                <h3 className="font-bold text-xl mb-3 text-gray-900">
                   {event.title}
                 </h3>
 
                 {/* Event Info */}
-                <div className="space-y-2 mb-3">
-                  <div className="flex items-start gap-2 text-sm">
-                    <span className="text-lg">📅</span>
+                <div className="space-y-2.5 mb-4">
+                  <div className="flex items-start gap-3 text-sm">
+                    <div className="bg-emerald-100 p-2 rounded-lg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-emerald-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
                     <div>
-                      <p className="font-semibold text-gray-700">
+                      <p className="font-semibold text-gray-900">
                         {event.date}
                       </p>
                       <p className="text-gray-600">{event.time}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-2 text-sm">
-                    <span className="text-lg">📍</span>
+                  <div className="flex items-start gap-3 text-sm">
+                    <div className="bg-blue-100 p-2 rounded-lg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-blue-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </div>
                     <p className="text-gray-600">{event.location}</p>
                   </div>
 
-                  <div className="flex items-start gap-2 text-sm">
-                    <span className="text-lg">👥</span>
+                  <div className="flex items-start gap-3 text-sm">
+                    <div className="bg-purple-100 p-2 rounded-lg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-purple-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
+                      </svg>
+                    </div>
                     <p className="text-gray-600">
                       Organized by {event.organizer}
                     </p>
                   </div>
 
-                  <div className="flex items-start gap-2 text-sm">
-                    <span className="text-lg">✓</span>
-                    <p className="text-gray-600">
+                  <div className="flex items-start gap-3 text-sm">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-orange-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                        />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 font-semibold">
                       {event.attendees}/{event.maxAttendees} registered
                     </p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                   {event.description}
                 </p>
 
                 {/* Progress Bar */}
-                <div className="mb-4">
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="mb-5">
+                  <div className="flex justify-between text-xs text-gray-600 mb-2">
+                    <span>Registration Progress</span>
+                    <span className="font-semibold">
+                      {Math.round((event.attendees / event.maxAttendees) * 100)}
+                      %
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                     <div
-                      className={`h-2 rounded-full ${
+                      className={`h-2.5 rounded-full transition-all duration-500 ${
                         (event.attendees / event.maxAttendees) * 100 >= 90
-                          ? "bg-red-500"
+                          ? "bg-gradient-to-r from-red-500 to-red-600"
                           : (event.attendees / event.maxAttendees) * 100 >= 75
-                          ? "bg-yellow-500"
-                          : "bg-green-500"
+                          ? "bg-gradient-to-r from-yellow-400 to-yellow-500"
+                          : "bg-gradient-to-r from-emerald-500 to-green-600"
                       }`}
                       style={{
                         width: `${
@@ -211,18 +298,18 @@ export default function Events() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <button
-                    className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${
+                    className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ${
                       event.status === "Full"
                         ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                        : "bg-green-600 text-white hover:bg-green-700"
+                        : "bg-gradient-to-r from-emerald-500 to-green-600 text-white hover:from-emerald-600 hover:to-green-700"
                     }`}
                     disabled={event.status === "Full"}
                   >
                     {event.status === "Full" ? "Event Full" : "Register Now"}
                   </button>
-                  <button className="px-4 py-2 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+                  <button className="px-6 py-3 border-2 border-emerald-600 text-emerald-600 rounded-xl font-bold text-sm hover:bg-emerald-50 transition-all duration-200">
                     Details
                   </button>
                 </div>
@@ -232,7 +319,7 @@ export default function Events() {
         </div>
 
         {/* Load More Button */}
-        <button className="w-full mt-6 bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors">
+        <button className="w-full mt-8 bg-white text-gray-700 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-200 border-2 border-gray-200 hover:border-gray-300">
           Load More Events
         </button>
       </main>
