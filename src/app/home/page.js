@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const newsItems = [
   {
@@ -8,7 +9,8 @@ const newsItems = [
     title: "Biodiversity Leadership",
     description:
       "Canada continues work toward protecting 30% of land and water by 2030, with major conservation efforts in the North.",
-    image: "/images/news-placeholder.jpg",
+    image:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=400&fit=crop", // Forest/nature image
     tag: "Details",
   },
   {
@@ -16,7 +18,8 @@ const newsItems = [
     title: "Indigenous Conservation",
     description:
       "There are major nature-protection deals in the North involving Indigenous groups, to safeguard Arctic ecosystems.",
-    image: "/images/news-placeholder.jpg",
+    image:
+      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=400&fit=crop", // Mountain/Arctic landscape
     tag: "Details",
   },
 ];
@@ -33,9 +36,13 @@ export default function Home() {
             <Link key={news.id} href={`/news/${news.id}`}>
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="h-48 bg-gray-200 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                    📰
-                  </div>
+                  <Image
+                    src={news.image}
+                    alt={news.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 448px"
+                  />
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-start mb-2">
